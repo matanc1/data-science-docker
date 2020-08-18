@@ -24,8 +24,6 @@ dependencies:
     - pip
     - scikit-learn
     - scikit-image
-    - neptune-cli
-    - opencv-python
     - scipy
     - spacy
     - arrow
@@ -69,6 +67,7 @@ dependencies:
         - s3
         - elasticsearch>=7.0.0,<8.0.0
         - neptune-client
+        - opencv-python
         - psutil
         - wandb
 

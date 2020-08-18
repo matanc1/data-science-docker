@@ -1,11 +1,7 @@
 FROM pytorch/pytorch
 
-COPY environment.yaml ./environment.yaml
-COPY download_models.py ./download_models.py
-COPY download_testdata.py ./download_testdata.py
-
-RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get update -y 
+RUN apt-get upgrade -y 
 
 RUN apt-get install -y --no-install-recommends build-essential \
          cmake \
@@ -43,11 +39,13 @@ RUN git clone https://github.com/fastai/nbdev_template
 
 
 RUN git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-RUN sh ~/.vim_runtime/install_awesome_vimrc.sh#
+RUN sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 
-RUN conda env create -f enviroment.yaml
+COPY environment.yaml ./environment.yaml
+RUN conda env create -f environment.yaml
 
-
+COPY download_models.py ./download_models.py
+COPY download_testdata.py ./download_testdata.py
 RUN python download_models.py 
 RUN python download_testdata.py
