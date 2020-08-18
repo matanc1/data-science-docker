@@ -1,0 +1,74 @@
+name: watson
+channels:
+    - fastai
+    - pytorch
+    - pyviz
+    - conda-forge
+    - rapidsai
+    - nvidia
+    - numba
+    - defaults
+dependencies:
+    - jupyter
+    - pytorch
+    - fastai2
+    - nbdev
+    - torchvision
+    - matplotlib
+    - pandas
+    - requests
+    - pyyaml
+    - fastprogress
+    - pillow
+    - python>=3.7
+    - pip
+    - scikit-learn
+    - scikit-image
+    - neptune-cli
+    - opencv-python
+    - scipy
+    - spacy
+    - arrow
+    - pyarrow
+    - holoviews
+    - bokeh
+    - panel 
+    - hvplot
+    - datashader
+    - cudf
+    - dask 
+    - networkx 
+    - prefect
+    - flask
+    - eli5
+    - pdpbox
+    - plotly
+    - ipywidgets>=7.5
+    - altair 
+    - vega_datasets
+    - fire
+    - koalas
+    - pyspark=2.4
+    
+    
+    - pip:
+        - great_expectations
+        - mlflow
+        - dagster
+        - dagit
+        - tensorflow
+        - pandas_profiling
+        - folium
+        - keras
+        - imbalanced-learn
+        - sklearn-pandas
+        - treeinterpreter
+        - cx_Oracle
+        - pyodbc
+        - boto3
+        - s3
+        - elasticsearch>=7.0.0,<8.0.0
+        - neptune-client
+        - psutil
+        - wandb
+
