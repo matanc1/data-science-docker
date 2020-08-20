@@ -1,4 +1,4 @@
-name: watson
+name: pytorch
 channels:
     - fastai
     - pytorch
@@ -54,10 +54,8 @@ dependencies:
         - mlflow
         - dagster
         - dagit
-        - tensorflow
         - pandas_profiling
         - folium
-        - keras
         - imbalanced-learn
         - sklearn-pandas
         - treeinterpreter

@@ -1,0 +1,42 @@
+FROM mltooling/ml-workspace-gpu
+
+RUN conda update -n base conda && \
+	pip uninstall -y fastai && \
+	pip install fastai2 \
+				    nbdev \
+					great_expectations \ 
+					treeinterpreter \ 
+					pdpbox \ 
+					s3 \ 
+					boto3 \ 
+					cx_Oracle \ 
+					wandb \ 
+					psutil \ 
+					elasticsearch \
+					pandas_profiling \
+					imbalanced-learn
+
+RUN	conda install -y prefect \ 
+					 pyspark=2.4 \
+					 jupyterlab \ 
+					 koalas && \
+	conda install -y -c pyviz holoviews \
+					 bokeh \
+				     panel \
+				     hvplot \
+				     datashader \
+					 dask 
+
+RUN jupyter lab build
+
+WORKDIR /workspace/gits
+
+RUN git clone --depth 1 https://github.com/PrefectHQ/prefect.git && \
+	git clone https://github.com/fastai/fastai-docs.git --depth 1 && \
+	git clone https://github.com/fastai/fastai.git --depth 1  && \
+	git clone https://github.com/fastai/fastcore.git --depth 1 && \
+	git clone https://github.com/fastai/nbdev && \
+	git clone https://github.com/fastai/nbdev_template && \
+	git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime && \ 
+	sh ~/.vim_runtime/install_awesome_vimrc.sh
+
