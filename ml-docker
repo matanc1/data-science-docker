@@ -27,9 +27,11 @@ RUN	conda install -y prefect \
 				     datashader \
 					 dask 
 
-RUN jupyter lab build
+RUN jupyter labextension update --all && \
+	jupyter lab build
+	
 
-WORKDIR /workspace/gits
+WORKDIR gits
 
 RUN git clone --depth 1 https://github.com/PrefectHQ/prefect.git && \
 	git clone https://github.com/fastai/fastai-docs.git --depth 1 && \
@@ -40,3 +42,11 @@ RUN git clone --depth 1 https://github.com/PrefectHQ/prefect.git && \
 	git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime && \ 
 	sh ~/.vim_runtime/install_awesome_vimrc.sh
 
+
+COPY download_data.py ./download_data.py
+RUN python download_data.py 
+
+
+RUN apt-get update && \ 
+	apt-get install ack-grep && \
+	apt-get install proxychains4
