@@ -1,8 +1,6 @@
 FROM mltooling/ml-workspace-gpu
 
-RUN conda update -n base conda && \
-	pip uninstall -y fastai && \
-	pip install fastai2 \
+RUN pip install --upgrade fastai \
 				    nbdev \
 					great_expectations \ 
 					treeinterpreter \ 
@@ -14,27 +12,22 @@ RUN conda update -n base conda && \
 					psutil \ 
 					elasticsearch \
 					pandas_profiling \
-					imbalanced-learn
-
-RUN	conda install -y prefect \ 
-					 pyspark=2.4 \
-					 jupyterlab \ 
-					 koalas && \
-	conda install -y -c pyviz holoviews \
-					 bokeh \
-				     panel \
-				     hvplot \
-				     datashader \
-					 dask 
-
-RUN jupyter labextension update --all && \
-	jupyter lab build
+					imbalanced-learn \
+					prefect \ 
+					pyspark==2.4 \
+					koalas \
+					holoviews \
+					bokeh \
+				    panel \
+				    hvplot \
+				    datashader \
+					dask \
+					fastbook 
 	
 
 WORKDIR gits
 
-RUN git clone --depth 1 https://github.com/PrefectHQ/prefect.git && \
-	git clone https://github.com/fastai/fastai-docs.git --depth 1 && \
+RUN git clone https://github.com/fastai/fastai-docs.git --depth 1 && \
 	git clone https://github.com/fastai/fastai.git --depth 1  && \
 	git clone https://github.com/fastai/fastcore.git --depth 1 && \
 	git clone https://github.com/fastai/nbdev && \
